@@ -392,6 +392,7 @@ const comments = [
 ];
 
 const params = new URLSearchParams(window.location.search);
+const userEl = document.getElementById("commentUser");
 const textEl = document.getElementById("commentText");
 const metaEl = document.getElementById("commentMeta");
 const bodyEl = document.getElementById("commentBody");
@@ -419,7 +420,7 @@ let index = Math.min(start, Math.max(0, filtered.length - 1));
 let timer = null;
 
 function formatMeta(comment) {
-  return `${comment.user} | ${comment.time}`;
+  return comment.time;
 }
 
 function shuffleComments(list) {
@@ -437,6 +438,7 @@ if (randomize) {
 
 function showComment() {
   if (!filtered.length) {
+    userEl.textContent = "";
     textEl.textContent = "No comments match this filter.";
     metaEl.textContent = "";
     bodyEl.classList.add("is-visible");
@@ -447,6 +449,7 @@ function showComment() {
 
   window.setTimeout(() => {
     const comment = filtered[index];
+    userEl.textContent = comment.user;
     textEl.textContent = comment.text;
     metaEl.textContent = showMeta ? formatMeta(comment) : "";
     bodyEl.classList.add("is-visible");

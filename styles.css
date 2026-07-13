@@ -93,15 +93,6 @@ body {
   min-width: 0;
 }
 
-.eyebrow {
-  color: var(--accent);
-  font-size: calc(14px * var(--scale));
-  font-weight: 900;
-  line-height: 1;
-  text-transform: uppercase;
-  margin-bottom: calc(5px * var(--scale));
-}
-
 h1 {
   margin: 0;
   color: var(--accent);
@@ -110,6 +101,15 @@ h1 {
   line-height: 1;
   overflow-wrap: anywhere;
   text-shadow: 0 0 18px rgba(83, 252, 24, 0.36), 0 3px 16px rgba(0, 0, 0, 0.74);
+}
+
+.comment-user {
+  color: var(--accent);
+  font-size: calc(25px * var(--scale));
+  font-weight: 950;
+  line-height: 1;
+  overflow-wrap: anywhere;
+  text-shadow: 0 0 16px rgba(83, 252, 24, 0.32), 0 2px 12px rgba(0, 0, 0, 0.74);
 }
 
 .comment-text {
@@ -125,7 +125,7 @@ h1 {
 .comment-meta {
   min-height: calc(22px * var(--scale));
   color: var(--muted);
-  font-size: calc(17px * var(--scale));
+  font-size: calc(15px * var(--scale));
   font-weight: 750;
   line-height: 1.25;
   overflow-wrap: anywhere;
@@ -156,7 +156,7 @@ body.clean .comment-card {
 
 body.clean .comment-text,
 body.clean h1,
-body.clean .eyebrow,
+body.clean .comment-user,
 body.clean .comment-meta {
   text-shadow: 0 4px 16px rgba(0, 0, 0, 0.88), 0 1px 3px rgba(0, 0, 0, 0.9);
 }
@@ -194,12 +194,12 @@ body.clean .brand-mark {
     font-size: calc(28px * var(--scale));
   }
 
-  .eyebrow {
-    font-size: calc(12px * var(--scale));
+  .comment-user {
+    font-size: calc(20px * var(--scale));
   }
 
   .comment-meta {
-    font-size: calc(14px * var(--scale));
+    font-size: calc(13px * var(--scale));
   }
 
 }
