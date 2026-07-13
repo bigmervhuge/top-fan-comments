@@ -134,7 +134,7 @@ h1 {
 .comment-user {
   min-width: 0;
   color: #42b7ff;
-  font-size: calc(27px * var(--scale));
+  font-size: calc(32px * var(--scale));
   font-weight: 950;
   line-height: 1;
   overflow: hidden;
@@ -244,7 +244,7 @@ body.clean .brand-mark {
   }
 
   .comment-user {
-    font-size: calc(21px * var(--scale));
+    font-size: calc(24px * var(--scale));
   }
 
   .comment-meta {
