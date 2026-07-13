@@ -1,0 +1,133 @@
+:root {
+  --scale: 1;
+  --bg: rgba(8, 10, 14, 0.76);
+  --border: rgba(255, 255, 255, 0.18);
+  --text: #ffffff;
+  --muted: rgba(255, 255, 255, 0.72);
+  --accent: #ffcf33;
+  --shadow: rgba(0, 0, 0, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: transparent;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: end center;
+  padding: clamp(16px, 4vw, 44px);
+}
+
+.comment-card {
+  width: min(94vw, 1120px);
+  min-height: calc(154px * var(--scale));
+  display: grid;
+  align-content: center;
+  gap: calc(12px * var(--scale));
+  padding: calc(24px * var(--scale)) calc(30px * var(--scale));
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 18px 48px var(--shadow);
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 420ms ease, transform 420ms ease;
+}
+
+.comment-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.kicker {
+  color: var(--accent);
+  font-size: calc(18px * var(--scale));
+  font-weight: 900;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.comment-text {
+  margin: 0;
+  font-size: calc(42px * var(--scale));
+  font-weight: 900;
+  line-height: 1.08;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.72);
+}
+
+.comment-meta {
+  min-height: calc(22px * var(--scale));
+  color: var(--muted);
+  font-size: calc(17px * var(--scale));
+  font-weight: 750;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.overlay.top {
+  place-items: start center;
+}
+
+.overlay.middle {
+  place-items: center;
+}
+
+.overlay.left {
+  place-items: end start;
+}
+
+.overlay.right {
+  place-items: end end;
+}
+
+body.clean .comment-card {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  padding-inline: 0;
+}
+
+body.clean .comment-text,
+body.clean .kicker,
+body.clean .comment-meta {
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.88), 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+@media (max-width: 640px) {
+  .overlay {
+    padding: 14px;
+  }
+
+  .comment-card {
+    width: 100%;
+    min-height: calc(132px * var(--scale));
+    padding: calc(18px * var(--scale)) calc(18px * var(--scale));
+  }
+
+  .comment-text {
+    font-size: calc(29px * var(--scale));
+  }
+
+  .kicker {
+    font-size: calc(15px * var(--scale));
+  }
+
+  .comment-meta {
+    font-size: calc(14px * var(--scale));
+  }
+}

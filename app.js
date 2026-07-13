@@ -1,0 +1,124 @@
+const comments = [
+  { time: "2026-06-28 11:34:27 AEST", channel: "b_more_ron", user: "TheLetterM", text: "Skinny is one with Kelly's scams now" },
+  { time: "2026-06-28 11:39:45 AEST", channel: "b_more_ron", user: "TheLetterM", text: "Kelly and Skinny edging to Ron's technical difficulties" },
+  { time: "2026-07-03 09:09:09 AEST", channel: "b_more_ron", user: "TheLetterM", text: "Dont even try, SkinnyKhunt did something similar to me, i muted him" },
+  { time: "2026-07-03 23:01:27 AEST", channel: "b_more_ron", user: "TheLetterM", text: "Literally i changed it and skinny said he did" },
+  { time: "2026-07-03 23:58:43 AEST", channel: "b_more_ron", user: "TheLetterM", text: "I see Skin Dog kissing Kelly's ass in chat tooSMH" },
+  { time: "2026-07-03 23:59:15 AEST", channel: "b_more_ron", user: "TheLetterM", text: "Have some respect for yorself Skinny Dog. Sad" },
+  { time: "2026-07-04 03:06:35 AEST", channel: "b_more_ron", user: "TheLetterM", text: "Ron, Dont give your login info to @SkinDoggieDog or anyone" },
+  { time: "2026-07-04 03:07:30 AEST", channel: "b_more_ron", user: "TheLetterM", text: "Skin khunt heated" },
+  { time: "2026-07-04 03:11:23 AEST", channel: "b_more_ron", user: "TheLetterM", text: "Big Merv Aka SkinDoggieDog is also a Kelly Caldwell simp, and overly sensitive about technical comments on OBS Sad" },
+  { time: "2026-07-04 03:36:55 AEST", channel: "b_more_ron", user: "TheLetterM", text: "SkinnySimp stop brown nosing Kelly. Sad Khunt @SkinDoggieDog" },
+  { time: "2026-07-04 03:38:02 AEST", channel: "b_more_ron", user: "TheLetterM", text: "Skinnydog is a SIMP for kelly caldwell Sad" },
+  { time: "2026-07-04 06:07:15 AEST", channel: "b_more_ron", user: "TheLetterM", text: "Who knows watch him @SkinDoggieDog aka BigMervHuge" },
+  { time: "2026-07-04 06:11:24 AEST", channel: "b_more_ron", user: "TheLetterM", text: "Fk BigMervHuge he should shove those emojis up his digital ass" },
+  { time: "2026-07-04 06:12:35 AEST", channel: "b_more_ron", user: "TheLetterM", text: "BigMervDouche" },
+  { time: "2026-07-04 06:14:42 AEST", channel: "b_more_ron", user: "TheLetterM", text: "SkinDoggieDog aka Big Merv Huge was inappropriately rude to me .. Fk him" },
+  { time: "2026-07-04 06:17:49 AEST", channel: "b_more_ron", user: "TheLetterM", text: "SkinDoggieDog (what kind of a fkn name is this, btw??) was also a major Kelly Caldwell simp (until today). Brown nosing weirdo khunt" },
+  { time: "2026-07-04 06:18:48 AEST", channel: "b_more_ron", user: "TheLetterM", text: "My money is on SkinDouche botting the strean" },
+  { time: "2026-07-04 06:21:16 AEST", channel: "b_more_ron", user: "TheLetterM", text: "Bingo. Skin is prob pissed i call him out on his BS, exposed. Or, a while back he played the \"savior\" with bs he caused" },
+  { time: "2026-07-06 03:28:11 AEST", channel: "b_more_ron", user: "TheLetterM", text: "Fk skinny khunt i cant deal with these clowns" },
+  { time: "2026-07-06 03:28:44 AEST", channel: "b_more_ron", user: "TheLetterM", text: "#BoycottSkindoggiedog" },
+  { time: "2026-07-06 03:30:46 AEST", channel: "b_more_ron", user: "TheLetterM", text: "skinny khunt was extremely rude to me for no good fkn reason. Fk him." },
+  { time: "2026-07-06 03:34:00 AEST", channel: "b_more_ron", user: "TheLetterM", text: "If Skinny wasnt a khunt we would get along great" },
+  { time: "2026-07-06 03:34:27 AEST", channel: "b_more_ron", user: "TheLetterM", text: "I'll take down the #boycottskindoggiedog" },
+  { time: "2026-07-06 03:41:20 AEST", channel: "CheapCharlieLive", user: "TheLetterM", text: "Skindig is unfit to be a mod on rons channel" },
+  { time: "2026-07-06 03:55:03 AEST", channel: "CheapCharlieLive", user: "TheLetterM", text: "This is whats wrong with SkinDoggieDog! Unfit to mod" },
+  { time: "2026-07-06 03:57:51 AEST", channel: "CheapCharlieLive", user: "TheLetterM", text: "If anything I'm trying to save it from Skin's possible sabotage" },
+  { time: "2026-07-06 04:20:49 AEST", channel: "b_more_ron", user: "TheLetterM", text: "Lol no! Wtf! Its Skindog spreading lies! Fk him!!!!" },
+  { time: "2026-07-06 04:22:48 AEST", channel: "b_more_ron", user: "TheLetterM", text: "he's a little khunt" },
+  { time: "2026-07-06 04:37:07 AEST", channel: "b_more_ron", user: "TheLetterM", text: "Wtf lol insanity, these guys are up to no good, we need to warn Ron. No Mod for Skinny" },
+  { time: "2026-07-06 04:50:39 AEST", channel: "b_more_ron", user: "TheLetterM", text: "Not true Dime i did not get his KPP removed dont lie, if anythingi saved it from skinnykhunt #BoycottSkinDoggieDogg" },
+  { time: "2026-07-06 05:59:42 AEST", channel: "b_more_ron", user: "TheLetterM", text: "Skinny .. is a triggered Karen .. he got triggered .. Wtf! I demand an apology!" },
+  { time: "2026-07-06 06:03:36 AEST", channel: "b_more_ron", user: "TheLetterM", text: "Yes its in the stream title. I Demand an apology #UnmodSkinny" },
+  { time: "2026-07-06 06:10:46 AEST", channel: "b_more_ron", user: "TheLetterM", text: "some idiot triggered karen rogue mod aka Skindoggiedogg .. I demand an apology, not only for the deception, but also the idiocy" },
+  { time: "2026-07-06 14:11:45 AEST", channel: "b_more_ron", user: "TheLetterM", text: "Skin is the subverter not me, it is suspected he may also be botting Ron's streams" },
+  { time: "2026-07-06 14:16:23 AEST", channel: "b_more_ron", user: "TheLetterM", text: "Ron got his KPP back today anyway. I believe Skin is the saboteur not I" },
+  { time: "2026-07-06 14:41:20 AEST", channel: "b_more_ron", user: "TheLetterM", text: "Classic Projection. Skin will you reimburse Ron for his lost KPP dollars?? Not a chance" },
+  { time: "2026-07-07 13:37:06 AEST", channel: "b_more_ron", user: "TheLetterM", text: "Skindoggiedog is a jaded khunt who doesnt know wtf" },
+  { time: "2026-07-07 13:38:13 AEST", channel: "b_more_ron", user: "TheLetterM", text: "Skimdog is likely partly responsible for Ron losing KPP with that just sleeping sht," },
+  { time: "2026-07-07 13:45:06 AEST", channel: "b_more_ron", user: "TheLetterM", text: "Skin tried to change it to just sleeping, but i held it on irl. Then he got triggered and mad. Sad" },
+  { time: "2026-07-10 09:21:59 AEST", channel: "CheapCharlieLive", user: "TheLetterM", text: "If anyone tries to change to Just Sleeping i will stop them" },
+  { time: "2026-07-10 09:22:49 AEST", channel: "CheapCharlieLive", user: "TheLetterM", text: "Automatic De-mod and permaban for changing Category to Just Sleeping" },
+  { time: "2026-06-22 21:03:48 AEST", channel: "Streetlifeasia", user: "OlTrouty", text: "SimpDoggieDog another CC snake ban him" },
+  { time: "2026-06-22 21:04:46 AEST", channel: "Streetlifeasia", user: "OlTrouty", text: "SadCuntMerv another life failure" },
+  { time: "2026-06-22 21:07:18 AEST", channel: "Streetlifeasia", user: "OlTrouty", text: "SadCuntMerv spends his free time making emojis for CC" },
+  { time: "2026-06-22 21:07:58 AEST", channel: "Streetlifeasia", user: "OlTrouty", text: "SimpDoggieDog a FOB ?" },
+  { time: "2026-06-22 21:13:01 AEST", channel: "Streetlifeasia", user: "OlTrouty", text: "SadCuntMerv is Australia's Jon North - Failure Back Home" },
+  { time: "2026-06-22 21:15:07 AEST", channel: "Streetlifeasia", user: "OlTrouty", text: "!tts Sad Khant Merv is Australia's Jonathon North - A Failure Back Home." },
+  { time: "2026-06-22 21:33:34 AEST", channel: "Streetlifeasia", user: "OlTrouty", text: "!tts Sad Khunt Merv, make some more emojis so you can jerk off when you see the chat use them in CC's chat." },
+  { time: "2026-06-22 21:47:28 AEST", channel: "Streetlifeasia", user: "OlTrouty", text: "SadCuntMerv's emojis scream Mr try hard" },
+  { time: "2026-06-23 20:37:14 AEST", channel: "Streetlifeasia", user: "OlTrouty", text: "Clive, Tan Man, 82625638 SadSackMerv - all simp to Kelly's KPP" },
+  { time: "2026-06-23 20:54:09 AEST", channel: "Streetlifeasia", user: "OlTrouty", text: "Yet Tan-the-man , DumbFuk Clive, Hanley, and SadSackMerv in Kellys Chat 24x7" },
+  { time: "2026-06-23 21:23:46 AEST", channel: "Streetlifeasia", user: "OlTrouty", text: "SkinnyDog Utter snake - I heard him talk shit about Kelly" },
+  { time: "2026-06-26 14:12:08 AEST", channel: "b_more_ron", user: "OlTrouty", text: "2 guys that JN lookalike dickhead that makes KellyEmojis and JJ Simp the other" },
+  { time: "2026-06-27 15:46:26 AEST", channel: "b_more_ron", user: "OlTrouty", text: "That dog mod guy losing friends fast" },
+  { time: "2026-06-27 15:46:52 AEST", channel: "b_more_ron", user: "OlTrouty", text: "SadCuntMerv same account" },
+  { time: "2026-06-27 16:25:15 AEST", channel: "b_more_ron", user: "OlTrouty", text: "dog mod does the boosting for kelly" },
+  { time: "2026-06-27 16:35:23 AEST", channel: "b_more_ron", user: "OlTrouty", text: "nope still 9 chatters including botrix and dog mods dup accounts" },
+  { time: "2026-06-27 17:50:57 AEST", channel: "b_more_ron", user: "OlTrouty", text: "skinny 2 faced - nice to Chat in CC's - then bad mouths behind their back" },
+  { time: "2026-06-28 22:29:58 AEST", channel: "b_more_ron", user: "OlTrouty", text: "go do one dog mod - u idiot" },
+  { time: "2026-06-29 20:19:00 AEST", channel: "b_more_ron", user: "OlTrouty", text: "Only Dog Mod and JJ simp will go to Kelly's now." },
+  { time: "2026-07-02 22:09:06 AEST", channel: "b_more_ron", user: "OlTrouty", text: "Ur Mod is Shit" },
+  { time: "2026-07-02 23:13:15 AEST", channel: "CheapCharlieLive", user: "OlTrouty", text: "no one laughs or reply's to Dog Mod's comment's" },
+  { time: "2026-07-03 21:40:04 AEST", channel: "Streetlifeasia", user: "OlTrouty", text: "it was that CC Dog Mod" },
+  { time: "2026-07-03 21:46:39 AEST", channel: "Streetlifeasia", user: "OlTrouty", text: "Dog Mod F" },
+  { time: "2026-07-03 22:15:28 AEST", channel: "Streetlifeasia", user: "OlTrouty", text: "It was CC's Dog Mod" },
+  { time: "2026-07-03 22:28:22 AEST", channel: "Streetlifeasia", user: "OlTrouty", text: "CC dog mod simping hard" },
+  { time: "2026-07-04 15:35:38 AEST", channel: "Streetlifeasia", user: "OlTrouty", text: "Dog Mod boosting Kelly" },
+  { time: "2026-07-04 15:36:35 AEST", channel: "Streetlifeasia", user: "OlTrouty", text: "noone likes that Dog Mod - I see it in other chats." },
+  { time: "2026-07-05 16:58:12 AEST", channel: "b_more_ron", user: "OlTrouty", text: "Muting Skinny for that ..." },
+  { time: "2026-07-05 18:49:18 AEST", channel: "Streetlifeasia", user: "OlTrouty", text: "No Dog Mod said ur channel was deleted" },
+  { time: "2026-07-05 18:51:33 AEST", channel: "Streetlifeasia", user: "OlTrouty", text: "Dog Mod clueless." },
+  { time: "2026-07-05 19:03:59 AEST", channel: "Streetlifeasia", user: "OlTrouty", text: "Dog Mod Botting" },
+];
+
+const params = new URLSearchParams(window.location.search);
+const textEl = document.getElementById("commentText");
+const metaEl = document.getElementById("commentMeta");
+const cardEl = document.getElementById("commentCard");
+const overlayEl = document.querySelector(".overlay");
+
+const delay = Math.max(1200, Number(params.get("seconds") || params.get("s") || 5) * 1000);
+const start = Math.max(0, Number(params.get("start") || 0)) % comments.length;
+const scale = Math.min(1.8, Math.max(0.55, Number(params.get("scale") || 1)));
+const showMeta = params.get("meta") !== "0";
+const include = (params.get("user") || "all").toLowerCase();
+const position = params.get("position") || params.get("pos") || "bottom";
+const clean = params.get("clean") === "1";
+
+document.documentElement.style.setProperty("--scale", scale);
+overlayEl.classList.toggle("top", position === "top");
+overlayEl.classList.toggle("middle", position === "middle" || position === "center");
+overlayEl.classList.toggle("left", position === "left");
+overlayEl.classList.toggle("right", position === "right");
+document.body.classList.toggle("clean", clean);
+
+const filtered = comments.filter((comment) => include === "all" || comment.user.toLowerCase() === include);
+let index = Math.min(start, Math.max(0, filtered.length - 1));
+
+function formatMeta(comment) {
+  return `${comment.user} | ${comment.channel} | ${comment.time}`;
+}
+
+function showComment() {
+  if (!filtered.length) {
+    textEl.textContent = "No comments match this filter.";
+    metaEl.textContent = "";
+    cardEl.classList.add("is-visible");
+    return;
+  }
+
+  cardEl.classList.remove("is-visible");
+
+  window.setTimeout(() => {
+    const comment = filtered[index];
+    textEl.textContent = comment.text;
+    metaEl.textContent = showMeta ? formatMeta(comment) : "";
+    cardEl.classList.add("is-visible");
+    index = (index + 1) % filtered.length;
+  }, 430);
+}
+
+showComment();
+window.setInterval(showComment, delay);
