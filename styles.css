@@ -83,6 +83,20 @@ body {
   width: 100%;
   min-height: calc(132px * var(--scale));
   visibility: hidden;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.media-card.is-visible {
+  visibility: visible;
+}
+
+.media-video {
+  width: 100%;
+  height: calc(132px * var(--scale));
+  display: block;
+  object-fit: contain;
 }
 
 .comment-card {

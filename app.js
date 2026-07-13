@@ -395,6 +395,8 @@ const commandCardEl = document.getElementById("commandCard");
 const commandTitleEl = document.getElementById("commandTitle");
 const commandTextEl = document.getElementById("commandText");
 const commandAudioEl = document.getElementById("commandAudio");
+const mediaCardEl = document.getElementById("mediaCard");
+const commandVideoEl = document.getElementById("commandVideo");
 const commandEndpoint = "https://script.google.com/macros/s/AKfycbwBwc7j-XyUPwXVcRTDemzHOehaxebaupi06xY4IBg8CaNp4fpsq-W1H__Dt880gntDSg/exec";
 
 const delay = Math.max(1200, Number(params.get("seconds") || params.get("s") || 13.5) * 1000);
@@ -484,8 +486,14 @@ window.addEventListener("keydown", (event) => {
   }
 });
 
+commandVideoEl.addEventListener("ended", () => {
+  mediaCardEl.classList.remove("is-visible");
+  mediaCardEl.setAttribute("aria-hidden", "true");
+});
+
 let lastCommandId = "";
 let lastAudioId = "";
+let lastVideoId = "";
 
 function pollCommandMessage() {
   const callbackName = `topFanCommand_${Date.now()}_${Math.floor(Math.random() * 100000)}`;
@@ -513,6 +521,7 @@ function updateCommandMessage(message) {
   if (!message) {
     commandCardEl.hidden = true;
     lastCommandId = "";
+    hideCommandVideo();
     return;
   }
 
@@ -520,6 +529,13 @@ function updateCommandMessage(message) {
     playCommandAudio(message);
     return;
   }
+
+  if (message.type === "video") {
+    playCommandVideo(message);
+    return;
+  }
+
+  hideCommandVideo();
 
   if (message.id && message.id === lastCommandId && !commandCardEl.hidden) {
     return;
@@ -533,6 +549,7 @@ function updateCommandMessage(message) {
 
 function playCommandAudio(message) {
   commandCardEl.hidden = true;
+  hideCommandVideo();
 
   if (!message.src || message.id === lastAudioId) {
     return;
@@ -551,6 +568,40 @@ function playCommandAudio(message) {
       lastAudioId = "";
     });
   }
+}
+
+function playCommandVideo(message) {
+  commandCardEl.hidden = true;
+
+  if (!message.src || message.id === lastVideoId) {
+    return;
+  }
+
+  lastVideoId = message.id || "";
+  mediaCardEl.classList.add("is-visible");
+  mediaCardEl.setAttribute("aria-hidden", "false");
+  commandVideoEl.pause();
+  commandVideoEl.currentTime = 0;
+  commandVideoEl.src = message.src;
+  commandVideoEl.muted = message.muted === true;
+  commandVideoEl.volume = Math.min(1, Math.max(0, Number(message.volume ?? 1)));
+
+  const playResult = commandVideoEl.play();
+
+  if (playResult && typeof playResult.catch === "function") {
+    playResult.catch(() => {
+      lastVideoId = "";
+    });
+  }
+}
+
+function hideCommandVideo() {
+  mediaCardEl.classList.remove("is-visible");
+  mediaCardEl.setAttribute("aria-hidden", "true");
+  commandVideoEl.pause();
+  commandVideoEl.removeAttribute("src");
+  commandVideoEl.load();
+  lastVideoId = "";
 }
 
 pollCommandMessage();
