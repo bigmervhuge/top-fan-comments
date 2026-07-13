@@ -394,6 +394,7 @@ const overlayEl = document.querySelector(".overlay");
 const commandCardEl = document.getElementById("commandCard");
 const commandTitleEl = document.getElementById("commandTitle");
 const commandTextEl = document.getElementById("commandText");
+const commandAudioEl = document.getElementById("commandAudio");
 const commandEndpoint = "https://script.google.com/macros/s/AKfycbwBwc7j-XyUPwXVcRTDemzHOehaxebaupi06xY4IBg8CaNp4fpsq-W1H__Dt880gntDSg/exec";
 
 const delay = Math.max(1200, Number(params.get("seconds") || params.get("s") || 13.5) * 1000);
@@ -484,6 +485,7 @@ window.addEventListener("keydown", (event) => {
 });
 
 let lastCommandId = "";
+let lastAudioId = "";
 
 function pollCommandMessage() {
   const callbackName = `topFanCommand_${Date.now()}_${Math.floor(Math.random() * 100000)}`;
@@ -514,6 +516,11 @@ function updateCommandMessage(message) {
     return;
   }
 
+  if (message.type === "audio") {
+    playCommandAudio(message);
+    return;
+  }
+
   if (message.id && message.id === lastCommandId && !commandCardEl.hidden) {
     return;
   }
@@ -522,6 +529,28 @@ function updateCommandMessage(message) {
   commandTitleEl.textContent = message.title || "Kelly Quote";
   commandTextEl.textContent = message.text || message.quote || "";
   commandCardEl.hidden = !commandTextEl.textContent;
+}
+
+function playCommandAudio(message) {
+  commandCardEl.hidden = true;
+
+  if (!message.src || message.id === lastAudioId) {
+    return;
+  }
+
+  lastAudioId = message.id || "";
+  commandAudioEl.pause();
+  commandAudioEl.currentTime = 0;
+  commandAudioEl.src = message.src;
+  commandAudioEl.volume = Math.min(1, Math.max(0, Number(message.volume ?? 1)));
+
+  const playResult = commandAudioEl.play();
+
+  if (playResult && typeof playResult.catch === "function") {
+    playResult.catch(() => {
+      lastAudioId = "";
+    });
+  }
 }
 
 pollCommandMessage();
