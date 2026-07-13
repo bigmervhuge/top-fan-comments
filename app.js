@@ -391,6 +391,10 @@ const textEl = document.getElementById("commentText");
 const metaEl = document.getElementById("commentMeta");
 const bodyEl = document.getElementById("commentBody");
 const overlayEl = document.querySelector(".overlay");
+const commandCardEl = document.getElementById("commandCard");
+const commandTitleEl = document.getElementById("commandTitle");
+const commandTextEl = document.getElementById("commandText");
+const commandEndpoint = "https://script.google.com/macros/s/AKfycbwBwc7j-XyUPwXVcRTDemzHOehaxebaupi06xY4IBg8CaNp4fpsq-W1H__Dt880gntDSg/exec";
 
 const delay = Math.max(1200, Number(params.get("seconds") || params.get("s") || 13.5) * 1000);
 const start = Math.max(0, Number(params.get("start") || 0)) % comments.length;
@@ -478,3 +482,47 @@ window.addEventListener("keydown", (event) => {
     advance();
   }
 });
+
+let lastCommandId = "";
+
+function pollCommandMessage() {
+  const callbackName = `topFanCommand_${Date.now()}_${Math.floor(Math.random() * 100000)}`;
+  const script = document.createElement("script");
+
+  window[callbackName] = (payload) => {
+    try {
+      updateCommandMessage(payload && payload.current);
+    } finally {
+      delete window[callbackName];
+      script.remove();
+    }
+  };
+
+  script.onerror = () => {
+    delete window[callbackName];
+    script.remove();
+  };
+
+  script.src = `${commandEndpoint}?action=current&callback=${callbackName}&t=${Date.now()}`;
+  document.body.appendChild(script);
+}
+
+function updateCommandMessage(message) {
+  if (!message) {
+    commandCardEl.hidden = true;
+    lastCommandId = "";
+    return;
+  }
+
+  if (message.id && message.id === lastCommandId && !commandCardEl.hidden) {
+    return;
+  }
+
+  lastCommandId = message.id || "";
+  commandTitleEl.textContent = message.title || "Kelly Quote";
+  commandTextEl.textContent = message.text || message.quote || "";
+  commandCardEl.hidden = !commandTextEl.textContent;
+}
+
+pollCommandMessage();
+window.setInterval(pollCommandMessage, 2000);

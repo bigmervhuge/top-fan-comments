@@ -33,6 +33,7 @@ body {
   height: max-content;
   max-height: 100vh;
   display: grid;
+  gap: calc(16px * var(--scale));
   place-items: start start;
   padding: 12px;
 }
@@ -41,6 +42,34 @@ body {
   width: 100vw;
   height: 100vh;
   padding: clamp(16px, 4vw, 44px);
+}
+
+.command-card {
+  width: min(88vw, 820px);
+  display: grid;
+  gap: calc(8px * var(--scale));
+  padding: calc(18px * var(--scale)) calc(30px * var(--scale));
+  color: var(--text);
+  background: transparent;
+  border: 1px solid transparent;
+}
+
+.command-title {
+  color: #42b7ff;
+  font-size: calc(25px * var(--scale));
+  font-weight: 950;
+  line-height: 1;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.82);
+}
+
+.command-text {
+  color: var(--text);
+  font-size: calc(38px * var(--scale));
+  font-weight: 950;
+  line-height: 1.08;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+  text-shadow: 0 3px 16px rgba(0, 0, 0, 0.86);
 }
 
 .comment-card {
@@ -216,6 +245,19 @@ body.clean .brand-mark {
     width: 100%;
     min-height: calc(170px * var(--scale));
     padding: calc(18px * var(--scale)) calc(18px * var(--scale));
+  }
+
+  .command-card {
+    width: 100%;
+    padding: calc(14px * var(--scale)) calc(18px * var(--scale));
+  }
+
+  .command-title {
+    font-size: calc(20px * var(--scale));
+  }
+
+  .command-text {
+    font-size: calc(28px * var(--scale));
   }
 
   .brand-header {
