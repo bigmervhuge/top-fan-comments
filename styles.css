@@ -270,14 +270,18 @@ body.clean .brand-mark {
     padding: 10px;
   }
 
-  .media-card {
-    display: none;
-  }
-
   .comment-card {
     width: 100%;
     min-height: calc(128px * var(--scale));
     padding: calc(14px * var(--scale)) calc(14px * var(--scale));
+  }
+
+  .media-card {
+    min-height: calc(128px * var(--scale));
+  }
+
+  .media-video {
+    height: calc(128px * var(--scale));
   }
 
   .command-card {
