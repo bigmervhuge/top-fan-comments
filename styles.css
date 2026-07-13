@@ -53,10 +53,10 @@ body.kelly-overlay .overlay {
   max-width: 100vw;
   height: 100vh;
   min-height: 0;
-  grid-template-columns: minmax(280px, min(88vw, 760px));
+  grid-template-columns: 1fr;
   align-content: start;
   justify-content: end;
-  padding: 12px;
+  padding: 0;
 }
 
 body.tfc-overlay .overlay {
@@ -70,7 +70,14 @@ body.tfc-overlay .command-card {
 }
 
 body.kelly-overlay .command-card {
-  width: min(88vw, 760px);
+  position: fixed;
+  top: calc(12px * var(--scale));
+  right: calc(12px * var(--scale));
+  width: max-content;
+  max-width: calc(100vw - (24px * var(--scale)));
+  min-height: 0;
+  justify-items: end;
+  text-align: right;
 }
 
 .command-card {
