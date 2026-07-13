@@ -15,10 +15,10 @@ https://bigmervhuge.github.io/top-fan-comments/
 Use query options to tune the display without editing files:
 
 ```text
-https://bigmervhuge.github.io/top-fan-comments/?seconds=5&scale=1&position=bottom
+https://bigmervhuge.github.io/top-fan-comments/?seconds=9&scale=1&position=bottom
 ```
 
-- `seconds=5` changes how long each comment stays on screen.
+- `seconds=9` changes how long each comment stays on screen.
 - `scale=1.2` makes the overlay larger. Try `0.8` to make it smaller.
 - `position=bottom`, `top`, `middle`, `left`, or `right` moves it.
 - `meta=0` hides the username/channel/timestamp line.

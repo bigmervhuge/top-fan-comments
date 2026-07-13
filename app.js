@@ -394,11 +394,11 @@ const comments = [
 const params = new URLSearchParams(window.location.search);
 const textEl = document.getElementById("commentText");
 const metaEl = document.getElementById("commentMeta");
-const cardEl = document.getElementById("commentCard");
+const bodyEl = document.getElementById("commentBody");
 const countEl = document.getElementById("commentCount");
 const overlayEl = document.querySelector(".overlay");
 
-const delay = Math.max(1200, Number(params.get("seconds") || params.get("s") || 5) * 1000);
+const delay = Math.max(1200, Number(params.get("seconds") || params.get("s") || 9) * 1000);
 const start = Math.max(0, Number(params.get("start") || 0)) % comments.length;
 const scale = Math.min(1.8, Math.max(0.55, Number(params.get("scale") || 1)));
 const showMeta = params.get("meta") !== "0";
@@ -429,20 +429,20 @@ function showComment() {
     textEl.textContent = "No comments match this filter.";
     metaEl.textContent = "";
     countEl.textContent = "";
-    cardEl.classList.add("is-visible");
+    bodyEl.classList.add("is-visible");
     return;
   }
 
-  cardEl.classList.remove("is-visible");
+  bodyEl.classList.remove("is-visible");
 
   window.setTimeout(() => {
     const comment = filtered[index];
     textEl.textContent = comment.text;
     metaEl.textContent = showMeta ? formatMeta(comment) : "";
     countEl.textContent = showCount ? `${index + 1} / ${filtered.length}` : "";
-    cardEl.classList.add("is-visible");
+    bodyEl.classList.add("is-visible");
     index = (index + 1) % filtered.length;
-  }, 430);
+  }, 630);
 }
 
 function advance() {
