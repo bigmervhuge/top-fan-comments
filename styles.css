@@ -49,10 +49,13 @@ body {
 }
 
 body.kelly-overlay .overlay {
-  width: max-content;
+  width: 100vw;
   max-width: 100vw;
+  height: 100vh;
   min-height: 0;
   grid-template-columns: minmax(280px, min(88vw, 760px));
+  align-content: start;
+  justify-content: end;
   padding: 12px;
 }
 
@@ -245,26 +248,37 @@ h1 {
 
 .overlay.top {
   align-content: start;
+  justify-content: center;
 }
 
 .overlay.top-left {
   align-content: start;
+  justify-content: start;
+}
+
+.overlay.top-right {
+  align-content: start;
+  justify-content: end;
 }
 
 .overlay.middle {
   align-content: center;
+  justify-content: center;
 }
 
 .overlay.left {
   align-content: center;
+  justify-content: start;
 }
 
 .overlay.right {
   align-content: center;
+  justify-content: end;
 }
 
 .overlay.bottom {
   align-content: end;
+  justify-content: center;
 }
 
 body.clean .comment-card {
