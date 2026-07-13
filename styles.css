@@ -1,12 +1,12 @@
 :root {
   --scale: 1;
-  --bg: rgba(8, 10, 14, 0.76);
-  --border: rgba(255, 255, 255, 0.18);
+  --bg: rgba(8, 10, 14, 0.38);
+  --border: rgba(255, 255, 255, 0.1);
   --text: #ffffff;
   --muted: rgba(255, 255, 255, 0.72);
   --accent: #53fc18;
   --accent-2: #00e701;
-  --shadow: rgba(0, 0, 0, 0.45);
+  --shadow: rgba(0, 0, 0, 0.24);
 }
 
 * {
@@ -52,8 +52,8 @@ body {
   padding: calc(24px * var(--scale)) calc(30px * var(--scale));
   color: var(--text);
   background:
-    linear-gradient(135deg, rgba(83, 252, 24, 0.16), transparent 34%),
-    linear-gradient(315deg, rgba(0, 231, 1, 0.12), transparent 38%),
+    linear-gradient(135deg, rgba(83, 252, 24, 0.08), transparent 34%),
+    linear-gradient(315deg, rgba(0, 231, 1, 0.06), transparent 38%),
     var(--bg);
   border: 1px solid var(--border);
   border-radius: 8px;
@@ -133,9 +133,9 @@ h1 {
 
 .comment-user {
   min-width: 0;
-  color: #ffd84d;
-  font-size: calc(21px * var(--scale));
-  font-weight: 900;
+  color: #42b7ff;
+  font-size: calc(27px * var(--scale));
+  font-weight: 950;
   line-height: 1;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -144,7 +144,7 @@ h1 {
 }
 
 .comment-user::before {
-  content: "by ";
+  content: "from ";
   color: var(--muted);
   font-weight: 800;
 }
@@ -244,7 +244,7 @@ body.clean .brand-mark {
   }
 
   .comment-user {
-    font-size: calc(15px * var(--scale));
+    font-size: calc(21px * var(--scale));
   }
 
   .comment-meta {
