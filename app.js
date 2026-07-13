@@ -318,12 +318,6 @@ const comments = [
     "text": "Only Dog Mod and JJ simp will go to Kelly's now."
   },
   {
-    "time": "2026-07-02 22:09:06 AEST",
-    "channel": "b_more_ron",
-    "user": "OlTrouty",
-    "text": "Ur Mod is Shit"
-  },
-  {
     "time": "2026-07-02 23:13:15 AEST",
     "channel": "CheapCharlieLive",
     "user": "OlTrouty",
@@ -398,7 +392,7 @@ const metaEl = document.getElementById("commentMeta");
 const bodyEl = document.getElementById("commentBody");
 const overlayEl = document.querySelector(".overlay");
 
-const delay = Math.max(1200, Number(params.get("seconds") || params.get("s") || 9) * 1000);
+const delay = Math.max(1200, Number(params.get("seconds") || params.get("s") || 13.5) * 1000);
 const start = Math.max(0, Number(params.get("start") || 0)) % comments.length;
 const scale = Math.min(1.8, Math.max(0.55, Number(params.get("scale") || 1)));
 const showMeta = params.get("meta") !== "0";
