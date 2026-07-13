@@ -22,7 +22,9 @@ https://bigmervhuge.github.io/top-fan-comments/?seconds=5&scale=1&position=botto
 - `scale=1.2` makes the overlay larger. Try `0.8` to make it smaller.
 - `position=bottom`, `top`, `middle`, `left`, or `right` moves it.
 - `meta=0` hides the username/channel/timestamp line.
+- `count=0` hides the comment counter.
 - `clean=1` removes the dark box and leaves only text shadow.
+- `paused=1` stops auto-rotation. Tap/click, Space, Enter, or the right arrow advances manually.
 - `user=TheLetterM` or `user=OlTrouty` filters to one user.
 
 ## Stream use

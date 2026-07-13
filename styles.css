@@ -5,11 +5,16 @@
   --text: #ffffff;
   --muted: rgba(255, 255, 255, 0.72);
   --accent: #ffcf33;
+  --accent-2: #36d1ff;
   --shadow: rgba(0, 0, 0, 0.45);
 }
 
 * {
   box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
 }
 
 html,
@@ -32,13 +37,16 @@ body {
 
 .comment-card {
   width: min(94vw, 1120px);
-  min-height: calc(154px * var(--scale));
+  min-height: calc(190px * var(--scale));
   display: grid;
   align-content: center;
-  gap: calc(12px * var(--scale));
+  gap: calc(18px * var(--scale));
   padding: calc(24px * var(--scale)) calc(30px * var(--scale));
   color: var(--text);
-  background: var(--bg);
+  background:
+    linear-gradient(135deg, rgba(255, 207, 51, 0.12), transparent 32%),
+    linear-gradient(315deg, rgba(54, 209, 255, 0.12), transparent 36%),
+    var(--bg);
   border: 1px solid var(--border);
   border-radius: 8px;
   box-shadow: 0 18px 48px var(--shadow);
@@ -52,12 +60,61 @@ body {
   transform: translateY(0);
 }
 
-.kicker {
+.brand-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: calc(14px * var(--scale));
+  min-width: 0;
+}
+
+.brand-mark {
+  width: calc(54px * var(--scale));
+  height: calc(54px * var(--scale));
+  display: grid;
+  place-items: center;
+  color: #071016;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  border-radius: 8px;
+  font-size: calc(19px * var(--scale));
+  font-weight: 950;
+  line-height: 1;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.36);
+}
+
+.brand-copy {
+  min-width: 0;
+}
+
+.eyebrow {
   color: var(--accent);
-  font-size: calc(18px * var(--scale));
+  font-size: calc(14px * var(--scale));
   font-weight: 900;
   line-height: 1;
   text-transform: uppercase;
+  margin-bottom: calc(5px * var(--scale));
+}
+
+h1 {
+  margin: 0;
+  color: var(--text);
+  font-size: calc(34px * var(--scale));
+  font-weight: 950;
+  line-height: 1;
+  overflow-wrap: anywhere;
+  text-shadow: 0 3px 16px rgba(0, 0, 0, 0.74);
+}
+
+.comment-count {
+  color: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  padding: calc(7px * var(--scale)) calc(12px * var(--scale));
+  background: rgba(255, 255, 255, 0.08);
+  font-size: calc(14px * var(--scale));
+  font-weight: 850;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .comment-text {
@@ -103,9 +160,15 @@ body.clean .comment-card {
 }
 
 body.clean .comment-text,
-body.clean .kicker,
+body.clean h1,
+body.clean .eyebrow,
 body.clean .comment-meta {
   text-shadow: 0 4px 16px rgba(0, 0, 0, 0.88), 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+body.clean .brand-mark,
+body.clean .comment-count {
+  display: none;
 }
 
 @media (max-width: 640px) {
@@ -115,19 +178,38 @@ body.clean .comment-meta {
 
   .comment-card {
     width: 100%;
-    min-height: calc(132px * var(--scale));
+    min-height: calc(170px * var(--scale));
     padding: calc(18px * var(--scale)) calc(18px * var(--scale));
   }
 
-  .comment-text {
-    font-size: calc(29px * var(--scale));
+  .brand-header {
+    grid-template-columns: auto 1fr;
   }
 
-  .kicker {
+  .brand-mark {
+    width: calc(42px * var(--scale));
+    height: calc(42px * var(--scale));
     font-size: calc(15px * var(--scale));
+  }
+
+  h1 {
+    font-size: calc(25px * var(--scale));
+  }
+
+  .comment-text {
+    font-size: calc(28px * var(--scale));
+  }
+
+  .eyebrow {
+    font-size: calc(12px * var(--scale));
   }
 
   .comment-meta {
     font-size: calc(14px * var(--scale));
+  }
+
+  .comment-count {
+    grid-column: 1 / -1;
+    justify-self: start;
   }
 }
