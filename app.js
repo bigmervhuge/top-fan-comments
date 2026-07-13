@@ -446,6 +446,25 @@ if (randomize) {
   filtered = shuffleComments(filtered);
 }
 
+function fitHeader() {
+  const row = document.querySelector(".title-row");
+  const title = row ? row.querySelector("h1") : null;
+  if (!row || !title || !userEl) {
+    return;
+  }
+
+  document.documentElement.style.setProperty("--header-fit", "1");
+  window.requestAnimationFrame(() => {
+    const available = row.clientWidth;
+    const gap = Number.parseFloat(window.getComputedStyle(row).columnGap) || 0;
+    const needed = title.scrollWidth + gap + userEl.scrollWidth;
+    if (available > 0 && needed > available) {
+      const fit = Math.max(0.7, Math.min(1, (available / needed) * 0.96));
+      document.documentElement.style.setProperty("--header-fit", fit.toFixed(3));
+    }
+  });
+}
+
 function showComment() {
   if (!filtered.length) {
     userEl.textContent = "";
@@ -460,6 +479,7 @@ function showComment() {
   window.setTimeout(() => {
     const comment = filtered[index];
     userEl.textContent = comment.user;
+    fitHeader();
     textEl.textContent = comment.text;
     metaEl.textContent = showMeta ? formatMeta(comment) : "";
     bodyEl.classList.add("is-visible");
@@ -485,6 +505,7 @@ if (!paused) {
 }
 
 window.addEventListener("click", advance);
+window.addEventListener("resize", fitHeader);
 window.addEventListener("keydown", (event) => {
   if (event.key === "ArrowRight" || event.key === " " || event.key === "Enter") {
     advance();

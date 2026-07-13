@@ -1,5 +1,6 @@
 :root {
   --scale: 1;
+  --header-fit: 1;
   --bg: transparent;
   --border: transparent;
   --text: #ffffff;
@@ -60,7 +61,7 @@ body.kelly-overlay .overlay {
 }
 
 body.tfc-overlay .overlay {
-  grid-template-columns: minmax(360px, 42fr) minmax(180px, 58fr);
+  grid-template-columns: minmax(620px, 64fr) minmax(140px, 36fr);
 }
 
 body.kelly-overlay .comment-card,
@@ -172,10 +173,7 @@ body.kelly-overlay .command-card {
 }
 
 .brand-header {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  align-items: center;
-  gap: calc(10px * var(--scale));
+  display: block;
   min-width: 0;
 }
 
@@ -199,9 +197,9 @@ body.kelly-overlay .command-card {
 
 .title-row {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   flex-wrap: nowrap;
-  gap: calc(8px * var(--scale)) calc(14px * var(--scale));
+  gap: calc(6px * var(--scale));
   min-width: 0;
   white-space: nowrap;
 }
@@ -210,7 +208,7 @@ h1 {
   flex: 0 0 auto;
   margin: 0;
   color: var(--accent);
-  font-size: calc(30px * var(--scale));
+  font-size: calc(30px * var(--scale) * var(--header-fit));
   font-weight: 950;
   line-height: 1;
   overflow-wrap: anywhere;
@@ -219,18 +217,13 @@ h1 {
 }
 
 .title-separator {
-  flex: 0 0 auto;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: calc(24px * var(--scale));
-  font-weight: 900;
-  line-height: 1;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.74);
+  display: none;
 }
 
 .comment-user {
   min-width: 0;
   color: #42b7ff;
-  font-size: calc(34px * var(--scale));
+  font-size: calc(34px * var(--scale) * var(--header-fit));
   font-weight: 950;
   line-height: 1;
   overflow: hidden;
@@ -242,7 +235,9 @@ h1 {
 .comment-user::before {
   content: "from ";
   color: var(--muted);
+  font-size: 0.62em;
   font-weight: 800;
+  margin-right: calc(2px * var(--scale));
 }
 
 .comment-text {
@@ -356,18 +351,8 @@ body.clean .brand-mark {
     font-size: calc(27px * var(--scale));
   }
 
-  .brand-header {
-    grid-template-columns: auto 1fr;
-  }
-
-  .brand-mark {
-    width: calc(42px * var(--scale));
-    height: calc(42px * var(--scale));
-    font-size: calc(15px * var(--scale));
-  }
-
   h1 {
-    font-size: calc(22px * var(--scale));
+    font-size: calc(22px * var(--scale) * var(--header-fit));
   }
 
   .title-separator {
@@ -379,7 +364,7 @@ body.clean .brand-mark {
   }
 
   .comment-user {
-    font-size: calc(26px * var(--scale));
+    font-size: calc(26px * var(--scale) * var(--header-fit));
   }
 
   .comment-meta {
