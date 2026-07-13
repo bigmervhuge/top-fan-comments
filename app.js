@@ -462,6 +462,14 @@ function fitHeader() {
       const fit = Math.max(0.7, Math.min(1, (available / needed) * 0.96));
       document.documentElement.style.setProperty("--header-fit", fit.toFixed(3));
     }
+
+    window.requestAnimationFrame(() => {
+      const bodyRect = bodyEl.getBoundingClientRect();
+      const userRect = userEl.getBoundingClientRect();
+      const fiveChars = Number.parseFloat(window.getComputedStyle(textEl).fontSize) * 2.5;
+      const maxWidth = Math.max(180, userRect.right - bodyRect.left + fiveChars);
+      document.documentElement.style.setProperty("--message-max-width", `${Math.ceil(maxWidth)}px`);
+    });
   });
 }
 

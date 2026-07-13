@@ -1,6 +1,7 @@
 :root {
   --scale: 1;
   --header-fit: 1;
+  --message-max-width: 100%;
   --bg: transparent;
   --border: transparent;
   --text: #ffffff;
@@ -160,6 +161,8 @@ body.kelly-overlay .command-card {
 .comment-body {
   display: grid;
   gap: calc(8px * var(--scale));
+  width: min(100%, var(--message-max-width));
+  max-width: min(100%, var(--message-max-width));
   min-height: calc(58px * var(--scale));
   align-content: center;
   opacity: 0;
