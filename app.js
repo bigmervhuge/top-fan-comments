@@ -551,7 +551,7 @@ function updateCommandMessage(message) {
   }
 
   lastCommandId = message.id || "";
-  commandTitleEl.textContent = message.title || "Kelly Quote";
+  commandTitleEl.textContent = message.type === "kelly" ? "The Wisdom Of Caldwell" : (message.title || "The Wisdom Of Caldwell");
   commandTextEl.textContent = message.text || message.quote || "";
   commandCardEl.hidden = !commandTextEl.textContent;
 }
@@ -570,7 +570,7 @@ function updateKellyMessage(message) {
   }
 
   lastCommandId = message.id || "";
-  commandTitleEl.textContent = message.title || "Kelly Quote";
+  commandTitleEl.textContent = "The Wisdom Of Caldwell";
   commandTextEl.textContent = message.text || message.quote || "";
   commandCardEl.hidden = !commandTextEl.textContent;
 }

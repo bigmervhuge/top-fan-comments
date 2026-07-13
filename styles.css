@@ -73,7 +73,7 @@ body.kelly-overlay .command-card {
   position: fixed;
   top: calc(12px * var(--scale));
   right: calc(12px * var(--scale));
-  width: min(calc(520px * var(--scale)), calc(100vw - (24px * var(--scale))));
+  width: min(calc(680px * var(--scale)), calc(100vw - (24px * var(--scale))));
   max-width: calc(100vw - (24px * var(--scale)));
   min-height: 0;
   justify-items: end;
@@ -94,7 +94,7 @@ body.kelly-overlay .command-card {
 }
 
 .command-title {
-  color: #42b7ff;
+  color: #b65cff;
   font-size: calc(28px * var(--scale));
   font-weight: 950;
   line-height: 1;
