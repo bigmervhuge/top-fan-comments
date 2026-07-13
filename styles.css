@@ -101,6 +101,14 @@ body {
   min-width: 0;
 }
 
+.title-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: calc(8px * var(--scale)) calc(14px * var(--scale));
+  min-width: 0;
+}
+
 h1 {
   margin: 0;
   color: var(--accent);
@@ -112,12 +120,18 @@ h1 {
 }
 
 .comment-user {
-  color: var(--accent);
-  font-size: calc(25px * var(--scale));
-  font-weight: 950;
+  color: var(--text);
+  font-size: calc(22px * var(--scale));
+  font-weight: 900;
   line-height: 1;
   overflow-wrap: anywhere;
-  text-shadow: 0 0 16px rgba(83, 252, 24, 0.32), 0 2px 12px rgba(0, 0, 0, 0.74);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.74);
+}
+
+.comment-user::before {
+  content: "by ";
+  color: var(--muted);
+  font-weight: 800;
 }
 
 .comment-text {
@@ -211,7 +225,7 @@ body.clean .brand-mark {
   }
 
   .comment-user {
-    font-size: calc(20px * var(--scale));
+    font-size: calc(18px * var(--scale));
   }
 
   .comment-meta {
