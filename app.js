@@ -394,6 +394,7 @@ const overlayEl = document.querySelector(".overlay");
 const commandCardEl = document.getElementById("commandCard");
 const commandTitleEl = document.getElementById("commandTitle");
 const commandTextEl = document.getElementById("commandText");
+const commandMetaEl = document.getElementById("commandMeta");
 const commandAudioEl = document.getElementById("commandAudio");
 const mediaCardEl = document.getElementById("mediaCard");
 const commandVideoEl = document.getElementById("commandVideo");
@@ -524,6 +525,7 @@ function pollCommandMessage() {
 function updateCommandMessage(message) {
   if (!message) {
     commandCardEl.hidden = true;
+    commandMetaEl.textContent = "";
     lastCommandId = "";
     hideCommandVideo();
     return;
@@ -553,6 +555,7 @@ function updateCommandMessage(message) {
   lastCommandId = message.id || "";
   commandTitleEl.textContent = message.type === "kelly" ? "The Wisdom Of Caldwell" : (message.title || "The Wisdom Of Caldwell");
   commandTextEl.textContent = message.text || message.quote || "";
+  commandMetaEl.textContent = showMeta ? (message.meta || message.time || "") : "";
   commandCardEl.hidden = !commandTextEl.textContent;
 }
 
@@ -562,6 +565,7 @@ function updateKellyMessage(message) {
 
   if (message.type !== "kelly") {
     commandCardEl.hidden = true;
+    commandMetaEl.textContent = "";
     return;
   }
 
@@ -572,11 +576,13 @@ function updateKellyMessage(message) {
   lastCommandId = message.id || "";
   commandTitleEl.textContent = "The Wisdom Of Caldwell";
   commandTextEl.textContent = message.text || message.quote || "";
+  commandMetaEl.textContent = showMeta ? (message.meta || message.time || "") : "";
   commandCardEl.hidden = !commandTextEl.textContent;
 }
 
 function playCommandAudio(message) {
   commandCardEl.hidden = true;
+  commandMetaEl.textContent = "";
   hideCommandVideo();
 
   if (!message.src || message.id === lastAudioId) {
@@ -600,6 +606,7 @@ function playCommandAudio(message) {
 
 function playCommandVideo(message) {
   commandCardEl.hidden = true;
+  commandMetaEl.textContent = "";
 
   if (!message.src || message.id === lastVideoId) {
     return;

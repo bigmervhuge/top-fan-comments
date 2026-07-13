@@ -111,6 +111,17 @@ body.kelly-overlay .command-card {
   text-shadow: 0 3px 16px rgba(0, 0, 0, 0.86);
 }
 
+.command-meta {
+  min-height: calc(20px * var(--scale));
+  color: var(--muted);
+  font-size: calc(15px * var(--scale));
+  font-weight: 750;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+  text-align: right;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.82);
+}
+
 .media-card {
   width: 100%;
   min-height: calc(132px * var(--scale));
