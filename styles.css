@@ -103,28 +103,43 @@ body {
 
 .title-row {
   display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
+  align-items: center;
+  flex-wrap: nowrap;
   gap: calc(8px * var(--scale)) calc(14px * var(--scale));
   min-width: 0;
+  white-space: nowrap;
 }
 
 h1 {
+  flex: 0 0 auto;
   margin: 0;
   color: var(--accent);
   font-size: calc(34px * var(--scale));
   font-weight: 950;
   line-height: 1;
   overflow-wrap: anywhere;
+  white-space: nowrap;
   text-shadow: 0 0 18px rgba(83, 252, 24, 0.36), 0 3px 16px rgba(0, 0, 0, 0.74);
 }
 
-.comment-user {
-  color: var(--text);
-  font-size: calc(22px * var(--scale));
+.title-separator {
+  flex: 0 0 auto;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: calc(28px * var(--scale));
   font-weight: 900;
   line-height: 1;
-  overflow-wrap: anywhere;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.74);
+}
+
+.comment-user {
+  min-width: 0;
+  color: #ffd84d;
+  font-size: calc(21px * var(--scale));
+  font-weight: 900;
+  line-height: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.74);
 }
 
@@ -220,12 +235,16 @@ body.clean .brand-mark {
     font-size: calc(25px * var(--scale));
   }
 
+  .title-separator {
+    font-size: calc(21px * var(--scale));
+  }
+
   .comment-text {
     font-size: calc(28px * var(--scale));
   }
 
   .comment-user {
-    font-size: calc(18px * var(--scale));
+    font-size: calc(15px * var(--scale));
   }
 
   .comment-meta {
