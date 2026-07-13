@@ -395,18 +395,17 @@ const params = new URLSearchParams(window.location.search);
 const textEl = document.getElementById("commentText");
 const metaEl = document.getElementById("commentMeta");
 const bodyEl = document.getElementById("commentBody");
-const countEl = document.getElementById("commentCount");
 const overlayEl = document.querySelector(".overlay");
 
 const delay = Math.max(1200, Number(params.get("seconds") || params.get("s") || 9) * 1000);
 const start = Math.max(0, Number(params.get("start") || 0)) % comments.length;
 const scale = Math.min(1.8, Math.max(0.55, Number(params.get("scale") || 1)));
 const showMeta = params.get("meta") !== "0";
-const showCount = params.get("count") !== "0";
 const include = (params.get("user") || "all").toLowerCase();
 const position = params.get("position") || params.get("pos") || "bottom";
 const clean = params.get("clean") === "1";
 const paused = params.get("paused") === "1";
+const randomize = params.get("random") !== "0";
 
 document.documentElement.style.setProperty("--scale", scale);
 overlayEl.classList.toggle("top", position === "top");
@@ -414,21 +413,32 @@ overlayEl.classList.toggle("middle", position === "middle" || position === "cent
 overlayEl.classList.toggle("left", position === "left");
 overlayEl.classList.toggle("right", position === "right");
 document.body.classList.toggle("clean", clean);
-countEl.hidden = !showCount;
 
-const filtered = comments.filter((comment) => include === "all" || comment.user.toLowerCase() === include);
+let filtered = comments.filter((comment) => include === "all" || comment.user.toLowerCase() === include);
 let index = Math.min(start, Math.max(0, filtered.length - 1));
 let timer = null;
 
 function formatMeta(comment) {
-  return `${comment.user} | ${comment.channel} | ${comment.time}`;
+  return `${comment.user} | ${comment.time}`;
+}
+
+function shuffleComments(list) {
+  const shuffled = [...list];
+  for (let i = shuffled.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
+if (randomize) {
+  filtered = shuffleComments(filtered);
 }
 
 function showComment() {
   if (!filtered.length) {
     textEl.textContent = "No comments match this filter.";
     metaEl.textContent = "";
-    countEl.textContent = "";
     bodyEl.classList.add("is-visible");
     return;
   }
@@ -439,9 +449,11 @@ function showComment() {
     const comment = filtered[index];
     textEl.textContent = comment.text;
     metaEl.textContent = showMeta ? formatMeta(comment) : "";
-    countEl.textContent = showCount ? `${index + 1} / ${filtered.length}` : "";
     bodyEl.classList.add("is-visible");
     index = (index + 1) % filtered.length;
+    if (randomize && index === 0) {
+      filtered = shuffleComments(filtered);
+    }
   }, 630);
 }
 

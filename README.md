@@ -21,10 +21,10 @@ https://bigmervhuge.github.io/top-fan-comments/?seconds=9&scale=1&position=botto
 - `seconds=9` changes how long each comment stays on screen.
 - `scale=1.2` makes the overlay larger. Try `0.8` to make it smaller.
 - `position=bottom`, `top`, `middle`, `left`, or `right` moves it.
-- `meta=0` hides the username/channel/timestamp line.
-- `count=0` hides the comment counter.
+- `meta=0` hides the username/timestamp line.
 - `clean=1` removes the dark box and leaves only text shadow.
 - `paused=1` stops auto-rotation. Tap/click, Space, Enter, or the right arrow advances manually.
+- `random=0` turns off the default random order.
 - `user=TheLetterM` or `user=OlTrouty` filters to one user.
 
 ## Stream use
