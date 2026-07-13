@@ -28,10 +28,18 @@ body {
 }
 
 .overlay {
+  width: max-content;
+  max-width: 100vw;
+  height: max-content;
+  max-height: 100vh;
+  display: grid;
+  place-items: start start;
+  padding: 12px;
+}
+
+.overlay.viewport {
   width: 100vw;
   height: 100vh;
-  display: grid;
-  place-items: end center;
   padding: clamp(16px, 4vw, 44px);
 }
 
@@ -135,6 +143,10 @@ h1 {
   place-items: start center;
 }
 
+.overlay.top-left {
+  place-items: start start;
+}
+
 .overlay.middle {
   place-items: center;
 }
@@ -145,6 +157,10 @@ h1 {
 
 .overlay.right {
   place-items: end end;
+}
+
+.overlay.bottom {
+  place-items: end center;
 }
 
 body.clean .comment-card {

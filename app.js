@@ -403,16 +403,20 @@ const start = Math.max(0, Number(params.get("start") || 0)) % comments.length;
 const scale = Math.min(1.8, Math.max(0.55, Number(params.get("scale") || 1)));
 const showMeta = params.get("meta") !== "0";
 const include = (params.get("user") || "all").toLowerCase();
-const position = params.get("position") || params.get("pos") || "bottom";
+const position = params.get("position") || params.get("pos") || "top-left";
 const clean = params.get("clean") === "1";
 const paused = params.get("paused") === "1";
 const randomize = params.get("random") !== "0";
+const viewportPositions = ["bottom", "top", "middle", "center", "left", "right"];
 
 document.documentElement.style.setProperty("--scale", scale);
+overlayEl.classList.toggle("viewport", viewportPositions.includes(position));
 overlayEl.classList.toggle("top", position === "top");
+overlayEl.classList.toggle("top-left", position === "top-left" || position === "topleft");
 overlayEl.classList.toggle("middle", position === "middle" || position === "center");
 overlayEl.classList.toggle("left", position === "left");
 overlayEl.classList.toggle("right", position === "right");
+overlayEl.classList.toggle("bottom", position === "bottom");
 document.body.classList.toggle("clean", clean);
 
 let filtered = comments.filter((comment) => include === "all" || comment.user.toLowerCase() === include);
