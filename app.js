@@ -408,6 +408,7 @@ const position = params.get("position") || params.get("pos") || "top-left";
 const clean = params.get("clean") === "1";
 const paused = params.get("paused") === "1";
 const randomize = params.get("random") !== "0";
+const overlayMode = (params.get("overlay") || params.get("mode") || "tfc").toLowerCase();
 const viewportPositions = ["bottom", "top", "middle", "center", "left", "right"];
 
 document.documentElement.style.setProperty("--scale", scale);
@@ -418,6 +419,8 @@ overlayEl.classList.toggle("middle", position === "middle" || position === "cent
 overlayEl.classList.toggle("left", position === "left");
 overlayEl.classList.toggle("right", position === "right");
 overlayEl.classList.toggle("bottom", position === "bottom");
+document.body.classList.toggle("kelly-overlay", overlayMode === "kelly");
+document.body.classList.toggle("tfc-overlay", overlayMode !== "kelly");
 document.body.classList.toggle("clean", clean);
 
 let filtered = comments.filter((comment) => include === "all" || comment.user.toLowerCase() === include);
@@ -525,6 +528,11 @@ function updateCommandMessage(message) {
     return;
   }
 
+  if (overlayMode === "kelly") {
+    updateKellyMessage(message);
+    return;
+  }
+
   if (message.type === "audio") {
     playCommandAudio(message);
     return;
@@ -536,6 +544,25 @@ function updateCommandMessage(message) {
   }
 
   hideCommandVideo();
+
+  if (message.id && message.id === lastCommandId && !commandCardEl.hidden) {
+    return;
+  }
+
+  lastCommandId = message.id || "";
+  commandTitleEl.textContent = message.title || "Kelly Quote";
+  commandTextEl.textContent = message.text || message.quote || "";
+  commandCardEl.hidden = !commandTextEl.textContent;
+}
+
+function updateKellyMessage(message) {
+  hideCommandVideo();
+  commandAudioEl.pause();
+
+  if (message.type !== "kelly") {
+    commandCardEl.hidden = true;
+    return;
+  }
 
   if (message.id && message.id === lastCommandId && !commandCardEl.hidden) {
     return;
