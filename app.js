@@ -612,7 +612,9 @@ function updateKellyMessage(message) {
 }
 
 function setCommandMeta(message) {
-  commandMetaEl.replaceChildren();
+  while (commandMetaEl.firstChild) {
+    commandMetaEl.removeChild(commandMetaEl.firstChild);
+  }
 
   if (!showMeta) {
     return;
@@ -671,8 +673,8 @@ function playCommandVideo(message) {
   }
 
   lastVideoId = message.id || "";
-  mediaCardEl.classList.remove("is-visible");
-  mediaCardEl.setAttribute("aria-hidden", "true");
+  mediaCardEl.classList.add("is-visible");
+  mediaCardEl.setAttribute("aria-hidden", "false");
   commandVideoEl.pause();
   commandVideoEl.currentTime = 0;
   commandVideoEl.src = message.src;
