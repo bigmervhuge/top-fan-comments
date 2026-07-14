@@ -9,7 +9,6 @@
     <meta http-equiv="Expires" content="0">
     <title>Top Fan Comments</title>
     <meta name="description" content="A livestream overlay for rotating curated Top Fan Comments.">
-    <link rel="stylesheet" href="styles.css?v=20260714-050">
   </head>
   <body>
     <main class="overlay" aria-live="polite">
@@ -38,6 +37,71 @@
       </section>
       <audio id="commandAudio" preload="auto"></audio>
     </main>
-    <script src="app.js?v=20260714-050"></script>
+    <script>
+      (function () {
+        var loadedVersion = "20260714-051";
+        var pollMs = 60000;
+
+        function versionUrl() {
+          return "version.json?t=" + Date.now();
+        }
+
+        function getVersion(done) {
+          var request = new XMLHttpRequest();
+          request.open("GET", versionUrl(), true);
+          request.setRequestHeader("Cache-Control", "no-cache");
+          request.onreadystatechange = function () {
+            if (request.readyState !== 4) {
+              return;
+            }
+
+            if (request.status >= 200 && request.status < 300) {
+              try {
+                var payload = JSON.parse(request.responseText);
+                done(payload.version || loadedVersion);
+              } catch (error) {
+                done(loadedVersion);
+              }
+              return;
+            }
+
+            done(loadedVersion);
+          };
+          request.send();
+        }
+
+        function assetUrl(path, version) {
+          return path + "?v=" + encodeURIComponent(version);
+        }
+
+        function loadAssets(version) {
+          loadedVersion = version;
+
+          var css = document.createElement("link");
+          css.rel = "stylesheet";
+          css.href = assetUrl("styles.css", version);
+          document.head.appendChild(css);
+
+          var script = document.createElement("script");
+          script.src = assetUrl("app.js", version);
+          document.body.appendChild(script);
+        }
+
+        function watchVersion() {
+          window.setInterval(function () {
+            getVersion(function (version) {
+              if (version && version !== loadedVersion) {
+                window.location.reload();
+              }
+            });
+          }, pollMs);
+        }
+
+        getVersion(function (version) {
+          loadAssets(version);
+          watchVersion();
+        });
+      }());
+    </script>
   </body>
 </html>

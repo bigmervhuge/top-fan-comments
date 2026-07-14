@@ -32,6 +32,8 @@ https://bigmervhuge.github.io/top-fan-comments/?seconds=9&scale=1
 
 Add the GitHub Pages URL as a browser/web overlay if the mobile streaming app supports it. If it only supports pasted text or alerts, use this page from a remote browser source through desktop OBS as a fallback.
 
+The overlay loads `styles.css` and `app.js` through `version.json`, then checks that file about once per minute. To force connected overlays to refresh after a code/style change, update the `version` value in `version.json` and push it with the change.
+
 ## Caldwell quotes
 
 The current Version 3 quote list is mirrored in `data/caldwell-quotes.json`. The live overlay receives these through the Apps Script command endpoint.
