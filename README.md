@@ -46,3 +46,4 @@ Hosted command video assets are listed in `data/video-commands.json`.
 - `!vb` -> `assets/video/vb.mp4`
 - `!vamp` -> `assets/video/vamp.mp4`
 - `!eels` -> `assets/video/eels.mp4`
+- `!hoes` -> `assets/video/hoes.mp4`

@@ -18,5 +18,10 @@
     "type": "video",
     "src": "https://bigmervhuge.github.io/top-fan-comments/assets/video/eels.mp4",
     "volume": 0.6
+  },
+  "!hoes": {
+    "type": "video",
+    "src": "https://bigmervhuge.github.io/top-fan-comments/assets/video/hoes.mp4",
+    "volume": 0.6
   }
 }
