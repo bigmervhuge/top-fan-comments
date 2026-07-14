@@ -31,3 +31,7 @@ https://bigmervhuge.github.io/top-fan-comments/?seconds=9&scale=1
 ## Stream use
 
 Add the GitHub Pages URL as a browser/web overlay if the mobile streaming app supports it. If it only supports pasted text or alerts, use this page from a remote browser source through desktop OBS as a fallback.
+
+## Caldwell quotes
+
+The current Version 3 quote list is mirrored in `data/caldwell-quotes.json`. The live overlay receives these through the Apps Script command endpoint.
