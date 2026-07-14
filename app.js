@@ -629,7 +629,7 @@ function setCommandMeta(message) {
 
   const author = document.createElement("span");
   author.className = "command-author";
-  author.textContent = "- Kcm775";
+  author.textContent = "Kcm775";
   commandMetaEl.append(author);
 
   if (meta) {

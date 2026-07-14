@@ -126,8 +126,8 @@ body.kelly-overlay .command-card {
 
 .command-author {
   color: #42b7ff;
-  font-size: calc(26px * var(--scale));
-  font-weight: 900;
+  font-size: calc(32px * var(--scale));
+  font-weight: 950;
 }
 
 .command-date {
@@ -135,14 +135,14 @@ body.kelly-overlay .command-card {
 }
 
 .media-card {
-  width: calc(100% + (36px * var(--scale)));
+  width: calc(100% + (28px * var(--scale)));
   min-height: calc(132px * var(--scale));
   visibility: hidden;
   display: grid;
   place-items: center;
   overflow: hidden;
   justify-self: start;
-  transform: translateX(calc(-36px * var(--scale)));
+  transform: translateX(calc(-28px * var(--scale)));
 }
 
 .media-card.is-visible {
