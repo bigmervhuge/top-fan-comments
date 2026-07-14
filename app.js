@@ -524,13 +524,6 @@ commandVideoEl.addEventListener("ended", () => {
   hideCommandVideo();
 });
 
-commandVideoEl.addEventListener("playing", () => {
-  if (lastVideoId) {
-    mediaCardEl.classList.add("is-visible");
-    mediaCardEl.setAttribute("aria-hidden", "false");
-  }
-});
-
 let lastCommandId = "";
 let lastAudioId = "";
 let lastVideoId = "";
@@ -676,24 +669,29 @@ function playCommandVideo(message) {
   mediaCardEl.classList.remove("is-visible");
   mediaCardEl.setAttribute("aria-hidden", "true");
   commandVideoEl.pause();
+  commandVideoEl.oncanplay = null;
+  commandVideoEl.onloadeddata = null;
   commandVideoEl.removeAttribute("src");
-  commandVideoEl.load();
   commandVideoEl.src = message.src;
   commandVideoEl.muted = message.muted === true;
   commandVideoEl.volume = Math.min(1, Math.max(0, Number(message.volume ?? 1)));
 
+  let revealed = false;
   const showVideo = () => {
-    mediaCardEl.classList.add("is-visible");
-    mediaCardEl.setAttribute("aria-hidden", "false");
+    if (revealed || message.id !== lastVideoId) {
+      return;
+    }
+
+    revealed = true;
+    window.requestAnimationFrame(() => {
+      if (message.id === lastVideoId) {
+        mediaCardEl.classList.add("is-visible");
+        mediaCardEl.setAttribute("aria-hidden", "false");
+      }
+    });
   };
-  commandVideoEl.onloadeddata = showVideo;
   commandVideoEl.oncanplay = showVideo;
   commandVideoEl.load();
-  window.setTimeout(() => {
-    if (message.id === lastVideoId && commandVideoEl.src) {
-      showVideo();
-    }
-  }, 900);
 
   const playResult = commandVideoEl.play();
 

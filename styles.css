@@ -39,7 +39,7 @@ body {
   grid-template-columns: minmax(360px, 42fr) minmax(180px, 22fr) minmax(300px, 36fr);
   align-items: stretch;
   gap: calc(18px * var(--scale));
-  padding: calc(12px * var(--scale)) calc(18px * var(--scale));
+  padding: calc(6px * var(--scale)) calc(8px * var(--scale));
   background: transparent;
 }
 
@@ -126,7 +126,7 @@ body.kelly-overlay .command-card {
 
 .command-author {
   color: #42b7ff;
-  font-size: calc(32px * var(--scale));
+  font-size: calc(28px * var(--scale));
   font-weight: 950;
 }
 
@@ -142,7 +142,7 @@ body.kelly-overlay .command-card {
   place-items: center;
   overflow: hidden;
   justify-self: start;
-  transform: translateX(calc(-16px * var(--scale)));
+  transform: translateX(calc(-6px * var(--scale)));
 }
 
 .media-card.is-visible {
@@ -154,6 +154,11 @@ body.kelly-overlay .command-card {
   height: calc(132px * var(--scale));
   display: block;
   object-fit: contain;
+  visibility: hidden;
+}
+
+.media-card.is-visible .media-video {
+  visibility: visible;
 }
 
 .comment-card {
