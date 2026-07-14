@@ -587,7 +587,7 @@ function updateCommandMessage(message) {
   lastCommandId = message.id || "";
   commandTitleEl.textContent = message.type === "kelly" ? "The Wisdom Of Caldwell" : (message.title || "The Wisdom Of Caldwell");
   commandTextEl.textContent = message.text || message.quote || "";
-  commandMetaEl.textContent = showMeta ? (message.meta || message.time || "") : "";
+  setCommandMeta(message);
   commandCardEl.hidden = !commandTextEl.textContent;
 }
 
@@ -607,8 +607,35 @@ function updateKellyMessage(message) {
   lastCommandId = message.id || "";
   commandTitleEl.textContent = "The Wisdom Of Caldwell";
   commandTextEl.textContent = message.text || message.quote || "";
-  commandMetaEl.textContent = showMeta ? (message.meta || message.time || "") : "";
+  setCommandMeta(message);
   commandCardEl.hidden = !commandTextEl.textContent;
+}
+
+function setCommandMeta(message) {
+  commandMetaEl.replaceChildren();
+
+  if (!showMeta) {
+    return;
+  }
+
+  const meta = message.meta || message.time || "";
+
+  if (message.type !== "kelly") {
+    commandMetaEl.textContent = meta;
+    return;
+  }
+
+  const author = document.createElement("span");
+  author.className = "command-author";
+  author.textContent = "- Kcm775";
+  commandMetaEl.append(author);
+
+  if (meta) {
+    const date = document.createElement("span");
+    date.className = "command-date";
+    date.textContent = ` - ${meta}`;
+    commandMetaEl.append(date);
+  }
 }
 
 function playCommandAudio(message) {
