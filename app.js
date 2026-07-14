@@ -521,7 +521,7 @@ window.addEventListener("keydown", (event) => {
 });
 
 commandVideoEl.addEventListener("ended", () => {
-  hideCommandVideo();
+  hideCommandVideo({ resetVideoId: false });
 });
 
 let lastCommandId = "";
@@ -555,6 +555,8 @@ function updateCommandMessage(message) {
     commandCardEl.hidden = true;
     commandMetaEl.textContent = "";
     lastCommandId = "";
+    lastAudioId = "";
+    hideCommandVideo();
     return;
   }
 
@@ -577,6 +579,7 @@ function updateCommandMessage(message) {
     return;
   }
 
+  hideCommandVideo();
   lastCommandId = message.id || "";
   commandTitleEl.textContent = message.type === "kelly" ? "The Wisdom Of Caldwell" : (message.title || "The Wisdom Of Caldwell");
   commandTextEl.textContent = message.text || message.quote || "";
@@ -702,7 +705,9 @@ function playCommandVideo(message) {
   }
 }
 
-function hideCommandVideo() {
+function hideCommandVideo(options = {}) {
+  const resetVideoId = options.resetVideoId !== false;
+
   mediaCardEl.classList.remove("is-visible");
   mediaCardEl.setAttribute("aria-hidden", "true");
   commandVideoEl.onloadeddata = null;
@@ -710,7 +715,10 @@ function hideCommandVideo() {
   commandVideoEl.pause();
   commandVideoEl.removeAttribute("src");
   commandVideoEl.load();
-  lastVideoId = "";
+
+  if (resetVideoId) {
+    lastVideoId = "";
+  }
 }
 
 pollCommandMessage();
