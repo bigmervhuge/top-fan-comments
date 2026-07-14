@@ -1,0 +1,22 @@
+{
+  "!yeah": {
+    "type": "video",
+    "src": "https://bigmervhuge.github.io/top-fan-comments/assets/video/yeah.mp4",
+    "volume": 0.6
+  },
+  "!vb": {
+    "type": "video",
+    "src": "https://bigmervhuge.github.io/top-fan-comments/assets/video/vb.mp4",
+    "volume": 0.6
+  },
+  "!vamp": {
+    "type": "video",
+    "src": "https://bigmervhuge.github.io/top-fan-comments/assets/video/vamp.mp4",
+    "volume": 0.6
+  },
+  "!eels": {
+    "type": "video",
+    "src": "https://bigmervhuge.github.io/top-fan-comments/assets/video/eels.mp4",
+    "volume": 0.6
+  }
+}

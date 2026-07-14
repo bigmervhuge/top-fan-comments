@@ -37,3 +37,12 @@ The overlay loads `styles.css` and `app.js` through `version.json`, then checks 
 ## Caldwell quotes
 
 The current Version 3 quote list is mirrored in `data/caldwell-quotes.json`. The live overlay receives these through the Apps Script command endpoint.
+
+## Video commands
+
+Hosted command video assets are listed in `data/video-commands.json`.
+
+- `!yeah` -> `assets/video/yeah.mp4`
+- `!vb` -> `assets/video/vb.mp4`
+- `!vamp` -> `assets/video/vamp.mp4`
+- `!eels` -> `assets/video/eels.mp4`
