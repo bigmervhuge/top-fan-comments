@@ -524,6 +524,13 @@ commandVideoEl.addEventListener("ended", () => {
   hideCommandVideo();
 });
 
+commandVideoEl.addEventListener("playing", () => {
+  if (lastVideoId) {
+    mediaCardEl.classList.add("is-visible");
+    mediaCardEl.setAttribute("aria-hidden", "false");
+  }
+});
+
 let lastCommandId = "";
 let lastAudioId = "";
 let lastVideoId = "";
@@ -585,7 +592,6 @@ function updateCommandMessage(message) {
 }
 
 function updateKellyMessage(message) {
-  hideCommandVideo();
   commandAudioEl.pause();
 
   if (message.type !== "kelly") {
@@ -646,10 +652,12 @@ function playCommandVideo(message) {
   commandVideoEl.muted = message.muted === true;
   commandVideoEl.volume = Math.min(1, Math.max(0, Number(message.volume ?? 1)));
 
-  commandVideoEl.onloadeddata = () => {
+  const showVideo = () => {
     mediaCardEl.classList.add("is-visible");
     mediaCardEl.setAttribute("aria-hidden", "false");
   };
+  commandVideoEl.onloadeddata = showVideo;
+  commandVideoEl.oncanplay = showVideo;
 
   const playResult = commandVideoEl.play();
 
@@ -664,6 +672,7 @@ function hideCommandVideo() {
   mediaCardEl.classList.remove("is-visible");
   mediaCardEl.setAttribute("aria-hidden", "true");
   commandVideoEl.onloadeddata = null;
+  commandVideoEl.oncanplay = null;
   commandVideoEl.pause();
   commandVideoEl.removeAttribute("src");
   commandVideoEl.load();
