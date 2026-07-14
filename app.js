@@ -673,10 +673,11 @@ function playCommandVideo(message) {
   }
 
   lastVideoId = message.id || "";
-  mediaCardEl.classList.add("is-visible");
-  mediaCardEl.setAttribute("aria-hidden", "false");
+  mediaCardEl.classList.remove("is-visible");
+  mediaCardEl.setAttribute("aria-hidden", "true");
   commandVideoEl.pause();
-  commandVideoEl.currentTime = 0;
+  commandVideoEl.removeAttribute("src");
+  commandVideoEl.load();
   commandVideoEl.src = message.src;
   commandVideoEl.muted = message.muted === true;
   commandVideoEl.volume = Math.min(1, Math.max(0, Number(message.volume ?? 1)));
@@ -687,6 +688,12 @@ function playCommandVideo(message) {
   };
   commandVideoEl.onloadeddata = showVideo;
   commandVideoEl.oncanplay = showVideo;
+  commandVideoEl.load();
+  window.setTimeout(() => {
+    if (message.id === lastVideoId && commandVideoEl.src) {
+      showVideo();
+    }
+  }, 900);
 
   const playResult = commandVideoEl.play();
 

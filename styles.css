@@ -97,7 +97,7 @@ body.kelly-overlay .command-card {
 
 .command-title {
   color: #b65cff;
-  font-size: calc(28px * var(--scale));
+  font-size: calc(32px * var(--scale));
   font-weight: 950;
   line-height: 1;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.82);
@@ -135,14 +135,14 @@ body.kelly-overlay .command-card {
 }
 
 .media-card {
-  width: calc(100% + (28px * var(--scale)));
+  width: calc(100% + (16px * var(--scale)));
   min-height: calc(132px * var(--scale));
   visibility: hidden;
   display: grid;
   place-items: center;
   overflow: hidden;
   justify-self: start;
-  transform: translateX(calc(-28px * var(--scale)));
+  transform: translateX(calc(-16px * var(--scale)));
 }
 
 .media-card.is-visible {
@@ -224,7 +224,7 @@ h1 {
   flex: 0 0 auto;
   margin: 0;
   color: var(--accent);
-  font-size: calc(30px * var(--scale) * var(--header-fit));
+  font-size: calc(34px * var(--scale) * var(--header-fit));
   font-weight: 950;
   line-height: 1;
   overflow-wrap: anywhere;
