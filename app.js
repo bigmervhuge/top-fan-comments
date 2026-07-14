@@ -479,6 +479,7 @@ function showComment() {
     textEl.textContent = "No comments match this filter.";
     metaEl.textContent = "";
     bodyEl.classList.add("is-visible");
+    document.body.classList.add("app-ready");
     return;
   }
 
@@ -491,6 +492,7 @@ function showComment() {
     textEl.textContent = comment.text;
     metaEl.textContent = showMeta ? formatMeta(comment) : "";
     bodyEl.classList.add("is-visible");
+    document.body.classList.add("app-ready");
     index = (index + 1) % filtered.length;
     if (randomize && index === 0) {
       filtered = shuffleComments(filtered);
@@ -556,7 +558,6 @@ function updateCommandMessage(message) {
     commandMetaEl.textContent = "";
     lastCommandId = "";
     lastAudioId = "";
-    hideCommandVideo();
     return;
   }
 
@@ -579,7 +580,6 @@ function updateCommandMessage(message) {
     return;
   }
 
-  hideCommandVideo();
   lastCommandId = message.id || "";
   commandTitleEl.textContent = message.type === "kelly" ? "The Wisdom Of Caldwell" : (message.title || "The Wisdom Of Caldwell");
   commandTextEl.textContent = message.text || message.quote || "";

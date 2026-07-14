@@ -17,7 +17,7 @@
         background: transparent;
       }
 
-      body:not(.overlay-ready) .overlay,
+      body:not(.app-ready) .overlay,
       .media-card,
       .media-video {
         visibility: hidden;
@@ -53,7 +53,7 @@
     </main>
     <script>
       (function () {
-        var loadedVersion = "20260714-058";
+        var loadedVersion = "20260714-059";
         var pollMs = 60000;
 
         function versionUrl() {
@@ -101,11 +101,9 @@
           css.rel = "stylesheet";
           css.href = assetUrl("styles.css", version);
           css.onload = function () {
-            document.body.classList.add("overlay-ready");
             loadScript(version);
           };
           css.onerror = function () {
-            document.body.classList.add("overlay-ready");
             loadScript(version);
           };
           document.head.appendChild(css);
