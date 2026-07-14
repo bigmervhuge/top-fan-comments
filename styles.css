@@ -39,7 +39,7 @@ body {
   grid-template-columns: minmax(360px, 42fr) minmax(180px, 22fr) minmax(300px, 36fr);
   align-items: stretch;
   gap: calc(18px * var(--scale));
-  padding: calc(6px * var(--scale)) calc(8px * var(--scale));
+  padding: calc(2px * var(--scale));
   background: transparent;
 }
 
