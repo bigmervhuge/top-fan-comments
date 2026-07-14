@@ -142,7 +142,7 @@ body.kelly-overlay .command-card {
   place-items: center;
   overflow: hidden;
   justify-self: start;
-  transform: translateX(calc(-6px * var(--scale)));
+  transform: translateX(calc(2px * var(--scale)));
 }
 
 .media-card.is-visible {

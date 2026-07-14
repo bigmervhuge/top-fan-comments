@@ -9,6 +9,20 @@
     <meta http-equiv="Expires" content="0">
     <title>Top Fan Comments</title>
     <meta name="description" content="A livestream overlay for rotating curated Top Fan Comments.">
+    <style>
+      html,
+      body {
+        margin: 0;
+        overflow: hidden;
+        background: transparent;
+      }
+
+      body:not(.overlay-ready) .overlay,
+      .media-card,
+      .media-video {
+        visibility: hidden;
+      }
+    </style>
   </head>
   <body>
     <main class="overlay" aria-live="polite">
@@ -39,7 +53,7 @@
     </main>
     <script>
       (function () {
-        var loadedVersion = "20260714-052";
+        var loadedVersion = "20260714-053";
         var pollMs = 60000;
 
         function versionUrl() {
@@ -74,17 +88,27 @@
           return path + "?v=" + encodeURIComponent(version);
         }
 
+        function loadScript(version) {
+          var script = document.createElement("script");
+          script.src = assetUrl("app.js", version);
+          document.body.appendChild(script);
+        }
+
         function loadAssets(version) {
           loadedVersion = version;
 
           var css = document.createElement("link");
           css.rel = "stylesheet";
           css.href = assetUrl("styles.css", version);
+          css.onload = function () {
+            document.body.classList.add("overlay-ready");
+            loadScript(version);
+          };
+          css.onerror = function () {
+            document.body.classList.add("overlay-ready");
+            loadScript(version);
+          };
           document.head.appendChild(css);
-
-          var script = document.createElement("script");
-          script.src = assetUrl("app.js", version);
-          document.body.appendChild(script);
         }
 
         function watchVersion() {
