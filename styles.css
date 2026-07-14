@@ -66,7 +66,7 @@ body.tfc-overlay .overlay {
 }
 
 body.tfc-overlay .overlay.viewport {
-  padding: 0;
+  padding: calc(12px * var(--scale));
   align-items: start;
 }
 
@@ -184,7 +184,7 @@ body.kelly-overlay .command-card {
 body.tfc-overlay .comment-card {
   min-height: 0;
   align-content: start;
-  padding: 0;
+  padding: calc(10px * var(--scale)) calc(12px * var(--scale));
 }
 
 .comment-body {
