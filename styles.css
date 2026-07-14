@@ -65,6 +65,11 @@ body.tfc-overlay .overlay {
   grid-template-columns: minmax(0, calc(620px * var(--scale))) minmax(0, 1fr);
 }
 
+body.tfc-overlay .overlay.viewport {
+  padding: 0;
+  align-items: start;
+}
+
 body.kelly-overlay .comment-card,
 body.kelly-overlay .media-card,
 body.tfc-overlay .command-card {
@@ -174,6 +179,12 @@ body.kelly-overlay .command-card {
   border: 1px solid var(--border);
   border-radius: 8px;
   box-shadow: 0 18px 48px var(--shadow);
+}
+
+body.tfc-overlay .comment-card {
+  min-height: 0;
+  align-content: start;
+  padding: 0;
 }
 
 .comment-body {
