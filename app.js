@@ -521,8 +521,7 @@ window.addEventListener("keydown", (event) => {
 });
 
 commandVideoEl.addEventListener("ended", () => {
-  mediaCardEl.classList.remove("is-visible");
-  mediaCardEl.setAttribute("aria-hidden", "true");
+  hideCommandVideo();
 });
 
 let lastCommandId = "";
@@ -556,7 +555,6 @@ function updateCommandMessage(message) {
     commandCardEl.hidden = true;
     commandMetaEl.textContent = "";
     lastCommandId = "";
-    hideCommandVideo();
     return;
   }
 
@@ -574,8 +572,6 @@ function updateCommandMessage(message) {
     playCommandVideo(message);
     return;
   }
-
-  hideCommandVideo();
 
   if (message.id && message.id === lastCommandId && !commandCardEl.hidden) {
     return;
@@ -642,13 +638,18 @@ function playCommandVideo(message) {
   }
 
   lastVideoId = message.id || "";
-  mediaCardEl.classList.add("is-visible");
-  mediaCardEl.setAttribute("aria-hidden", "false");
+  mediaCardEl.classList.remove("is-visible");
+  mediaCardEl.setAttribute("aria-hidden", "true");
   commandVideoEl.pause();
   commandVideoEl.currentTime = 0;
   commandVideoEl.src = message.src;
   commandVideoEl.muted = message.muted === true;
   commandVideoEl.volume = Math.min(1, Math.max(0, Number(message.volume ?? 1)));
+
+  commandVideoEl.onloadeddata = () => {
+    mediaCardEl.classList.add("is-visible");
+    mediaCardEl.setAttribute("aria-hidden", "false");
+  };
 
   const playResult = commandVideoEl.play();
 
@@ -662,6 +663,7 @@ function playCommandVideo(message) {
 function hideCommandVideo() {
   mediaCardEl.classList.remove("is-visible");
   mediaCardEl.setAttribute("aria-hidden", "true");
+  commandVideoEl.onloadeddata = null;
   commandVideoEl.pause();
   commandVideoEl.removeAttribute("src");
   commandVideoEl.load();

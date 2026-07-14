@@ -125,12 +125,13 @@ body.kelly-overlay .command-card {
 }
 
 .media-card {
-  width: 100%;
+  width: calc(100% + (24px * var(--scale)));
   min-height: calc(132px * var(--scale));
   visibility: hidden;
   display: grid;
   place-items: center;
   overflow: hidden;
+  transform: translateX(calc(-24px * var(--scale)));
 }
 
 .media-card.is-visible {
