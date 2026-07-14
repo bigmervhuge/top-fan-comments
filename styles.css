@@ -62,7 +62,7 @@ body.kelly-overlay .overlay {
 }
 
 body.tfc-overlay .overlay {
-  grid-template-columns: minmax(620px, 64fr) minmax(140px, 36fr);
+  grid-template-columns: minmax(0, calc(620px * var(--scale))) minmax(0, 1fr);
 }
 
 body.kelly-overlay .comment-card,
@@ -125,13 +125,14 @@ body.kelly-overlay .command-card {
 }
 
 .media-card {
-  width: calc(100% + (24px * var(--scale)));
+  width: calc(100% + (48px * var(--scale)));
   min-height: calc(132px * var(--scale));
   visibility: hidden;
   display: grid;
   place-items: center;
   overflow: hidden;
-  transform: translateX(calc(-24px * var(--scale)));
+  justify-self: start;
+  transform: translateX(calc(-48px * var(--scale)));
 }
 
 .media-card.is-visible {
@@ -147,6 +148,7 @@ body.kelly-overlay .command-card {
 
 .comment-card {
   width: 100%;
+  min-width: 0;
   min-height: calc(132px * var(--scale));
   display: grid;
   align-content: center;
