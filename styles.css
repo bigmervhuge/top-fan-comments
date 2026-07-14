@@ -97,7 +97,7 @@ body.kelly-overlay .command-card {
 
 .command-title {
   color: #b65cff;
-  font-size: calc(32px * var(--scale));
+  font-size: calc(34px * var(--scale));
   font-weight: 950;
   line-height: 1;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.82);
