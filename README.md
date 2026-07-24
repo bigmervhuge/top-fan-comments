@@ -1,6 +1,6 @@
-# Top Fan Comments
+# BMH Media Player
 
-Static livestream overlay for rotating curated comments one at a time.
+Static livestream overlay media player.
 
 ## GitHub Pages
 

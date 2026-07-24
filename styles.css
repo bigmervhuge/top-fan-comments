@@ -187,6 +187,11 @@ body.tfc-overlay .comment-card {
   padding: calc(10px * var(--scale)) calc(12px * var(--scale));
 }
 
+body.tfc-overlay .comment-user,
+body.tfc-overlay .comment-body {
+  display: none;
+}
+
 .comment-body {
   display: grid;
   gap: calc(8px * var(--scale));
