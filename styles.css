@@ -1,6 +1,8 @@
 :root {
   --scale: 1;
   --header-fit: 1;
+  --media-width: 360px;
+  --media-height: 132px;
   --message-max-width: 100%;
   --bg: transparent;
   --border: transparent;
@@ -62,17 +64,24 @@ body.kelly-overlay .overlay {
 }
 
 body.tfc-overlay .overlay {
-  grid-template-columns: minmax(0, calc(620px * var(--scale))) minmax(0, 1fr);
+  min-height: 0;
+  height: 100vh;
+  grid-template-columns: 1fr;
+  padding: 0;
 }
 
 body.tfc-overlay .overlay.viewport {
-  padding: calc(12px * var(--scale));
+  padding: 0;
   align-items: start;
 }
 
 body.kelly-overlay .comment-card,
 body.kelly-overlay .media-card,
 body.tfc-overlay .command-card {
+  display: none;
+}
+
+body.tfc-overlay .comment-card {
   display: none;
 }
 
@@ -140,8 +149,9 @@ body.kelly-overlay .command-card {
 }
 
 .media-card {
-  width: calc(100% + (16px * var(--scale)));
-  min-height: calc(132px * var(--scale));
+  width: var(--media-width);
+  height: var(--media-height);
+  min-height: 0;
   visibility: hidden;
   display: grid;
   place-items: center;
@@ -156,7 +166,7 @@ body.kelly-overlay .command-card {
 
 .media-video {
   width: 100%;
-  height: calc(132px * var(--scale));
+  height: 100%;
   display: block;
   object-fit: contain;
   visibility: hidden;
@@ -367,11 +377,11 @@ body.clean .brand-mark {
   }
 
   .media-card {
-    min-height: calc(128px * var(--scale));
+    min-height: 0;
   }
 
   .media-video {
-    height: calc(128px * var(--scale));
+    height: 100%;
   }
 
   .command-card {

@@ -403,6 +403,8 @@ const commandEndpoint = "https://script.google.com/macros/s/AKfycbwBwc7j-XyUPwXV
 const delay = Math.max(1200, Number(params.get("seconds") || params.get("s") || 13.5) * 1000);
 const start = Math.max(0, Number(params.get("start") || 0)) % comments.length;
 const scale = Math.min(1.8, Math.max(0.55, Number(params.get("scale") || 1)));
+const defaultMediaWidth = Math.min(1200, Math.max(80, Number(params.get("mediaWidth") || params.get("width") || 360)));
+const defaultMediaHeight = Math.min(800, Math.max(60, Number(params.get("mediaHeight") || params.get("height") || 132)));
 const showMeta = params.get("meta") !== "0";
 const include = (params.get("user") || "all").toLowerCase();
 const overlayMode = (params.get("overlay") || params.get("mode") || "tfc").toLowerCase();
@@ -413,6 +415,8 @@ const randomize = params.get("random") !== "0";
 const viewportPositions = ["bottom", "top", "middle", "center", "left", "right", "top-right", "topright", "top-left", "topleft"];
 
 document.documentElement.style.setProperty("--scale", scale);
+document.documentElement.style.setProperty("--media-width", `${defaultMediaWidth * scale}px`);
+document.documentElement.style.setProperty("--media-height", `${defaultMediaHeight * scale}px`);
 overlayEl.classList.toggle("viewport", viewportPositions.includes(position));
 overlayEl.classList.toggle("top", position === "top");
 overlayEl.classList.toggle("top-left", position === "top-left" || position === "topleft");
@@ -428,6 +432,10 @@ document.body.classList.toggle("clean", clean);
 let filtered = comments.filter((comment) => include === "all" || comment.user.toLowerCase() === include);
 let index = Math.min(start, Math.max(0, filtered.length - 1));
 let timer = null;
+
+if (overlayMode !== "kelly") {
+  document.body.classList.add("app-ready");
+}
 
 function formatMeta(comment) {
   return comment.time;
@@ -669,6 +677,7 @@ function playCommandVideo(message) {
   }
 
   lastVideoId = message.id || "";
+  applyCommandVideoSize(message);
   mediaCardEl.classList.remove("is-visible");
   mediaCardEl.setAttribute("aria-hidden", "true");
   commandVideoEl.pause();
@@ -703,6 +712,20 @@ function playCommandVideo(message) {
       lastVideoId = "";
     });
   }
+}
+
+function parsePositiveNumber(value) {
+  const number = Number(value);
+  return Number.isFinite(number) && number > 0 ? number : null;
+}
+
+function applyCommandVideoSize(message) {
+  const mediaScale = Math.min(3, Math.max(0.2, parsePositiveNumber(message.scale) || 1));
+  const width = Math.min(1400, Math.max(80, parsePositiveNumber(message.width) || defaultMediaWidth));
+  const height = Math.min(900, Math.max(60, parsePositiveNumber(message.height) || defaultMediaHeight));
+
+  document.documentElement.style.setProperty("--media-width", `${Math.round(width * scale * mediaScale)}px`);
+  document.documentElement.style.setProperty("--media-height", `${Math.round(height * scale * mediaScale)}px`);
 }
 
 function hideCommandVideo(options = {}) {

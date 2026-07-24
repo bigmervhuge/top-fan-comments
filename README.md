@@ -1,6 +1,6 @@
 # BMH Media Player
 
-Static livestream overlay media player.
+Static livestream overlay media player. The main overlay stays transparent and only appears while command media is playing.
 
 ## GitHub Pages
 
@@ -15,18 +15,11 @@ https://bigmervhuge.github.io/bmh-media-player/
 Use query options to tune the display without editing files:
 
 ```text
-https://bigmervhuge.github.io/bmh-media-player/?seconds=9&scale=1
+https://bigmervhuge.github.io/bmh-media-player/?scale=1&width=360&height=132
 ```
 
-- `seconds=9` changes how long each comment stays on screen.
-- `scale=1.2` makes the overlay larger. Try `0.8` to make it smaller.
-- Default display is a compact top-left box.
-- `position=bottom`, `top`, `middle`, `left`, or `right` expands it to a full overlay canvas and moves the box.
-- `meta=0` hides the username/timestamp line.
-- `clean=1` removes the dark box and leaves only text shadow.
-- `paused=1` stops auto-rotation. Tap/click, Space, Enter, or the right arrow advances manually.
-- `random=0` turns off the default random order.
-- `user=TheLetterM` or `user=OlTrouty` filters to one user.
+- `scale=1.2` makes command media larger. Try `0.8` to make it smaller.
+- `width=420&height=160` sets the default media box size.
 
 ## Stream use
 
@@ -47,3 +40,5 @@ Hosted command video assets are listed in `data/video-commands.json`.
 - `!vamp` -> `assets/video/vamp.mp4`
 - `!eels` -> `assets/video/eels.mp4`
 - `!hoes` -> `assets/video/hoes.mp4`
+
+Command URLs can also pass per-clip sizing to the Apps Script endpoint, such as `&width=420&height=160` or `&scale=1.25`.
