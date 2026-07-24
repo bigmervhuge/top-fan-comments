@@ -7,7 +7,7 @@ Static livestream overlay media player.
 Publish this repository with GitHub Pages from the `main` branch root. The overlay URL will be:
 
 ```text
-https://bigmervhuge.github.io/top-fan-comments/
+https://bigmervhuge.github.io/bmh-media-player/
 ```
 
 ## URL options
@@ -15,7 +15,7 @@ https://bigmervhuge.github.io/top-fan-comments/
 Use query options to tune the display without editing files:
 
 ```text
-https://bigmervhuge.github.io/top-fan-comments/?seconds=9&scale=1
+https://bigmervhuge.github.io/bmh-media-player/?seconds=9&scale=1
 ```
 
 - `seconds=9` changes how long each comment stays on screen.
